@@ -1,6 +1,6 @@
 let colaboradores = [];
 
-const webAppUrl = 'https://script.google.com/macros/s/AKfycby2wONQXzfQgVccQsttmdSnza5Ni3jb78xJnzz6laC4yEcAA5Hpy56yNJCdL5q6Dlt3/exec'; /*doPost v3*/
+const webAppUrl = 'http://localhost:3000/relay'; /*doPost v3*/
 
 function formatarDataISO(data) {
     if (!data || data === '-') return '-';
