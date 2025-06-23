@@ -24,7 +24,9 @@ function calcularStatusDocumento(nomeDocumento, dataEmissao) {
 
     const validadeAnos = validadeDocumentos[nomeDocumento];
     const data = new Date(dataEmissao);
-    const dataVencimento = new Date(data.setFullYear(data.getFullYear() + validadeAnos));
+    const dataVencimento = new Date(data);  // Cópia para não alterar a original
+    dataVencimento.setFullYear(dataVencimento.getFullYear() + validadeAnos);
+
     const hoje = new Date();
     const diasRestantes = Math.ceil((dataVencimento - hoje) / (1000 * 60 * 60 * 24));
 
@@ -44,7 +46,7 @@ function calcularStatusDocumento(nomeDocumento, dataEmissao) {
 }
 
 async function carregarColaboradores() {
-    const endpoint = 'https://script.google.com/macros/s/AKfycbxfbBeJqwU9owOqlVoW0_AELRe2eJ2EmjVywqkO3WnWczazMwKI38DyDvg2EZqa5p8L/exec' /*doGet v1*/;
+    const endpoint = 'https://script.google.com/macros/s/AKfycbxadvGr5ustxgi_jxcNus9KaLykzb7qGNEMCXXy8PHxtC7NtZ8l0mA6cNvk24VNHdAC/exec'; /*doGet v2*/
 
     try {
         const response = await fetch(endpoint);
@@ -65,10 +67,14 @@ async function carregarColaboradores() {
 
 function gerarCampoDocumento(nomeDocumento, valorData) {
     const status = calcularStatusDocumento(nomeDocumento, valorData);
+    const dataEmissaoFormatada = formatarDataISO(valorData);
+
     return `<div class="field">
-                <label>${nomeDocumento}:</label>
-                <span data-doc="${nomeDocumento}" class="${status.classe}">${status.texto}</span>
-            </div>`;
+        <label>${nomeDocumento}:</label>
+        <span data-doc="${nomeDocumento}" data-emissao="${valorData}" class="${status.classe}">
+            Emissão: ${dataEmissaoFormatada} | Venc: ${status.texto}
+        </span>
+    </div>`;
 }
 
 function mostrarColaborador() {
@@ -120,10 +126,10 @@ function mostrarColaborador() {
         documentos.forEach(doc => {
             const span = detalhesDiv.querySelector(`span[data-doc="${doc}"]`);
             if (span) {
-                const valorAtual = span.textContent.split(' ')[0];
-                const dataParts = valorAtual.split('/');
-                if (dataParts.length === 3) {
-                    const yyyyMMdd = `${dataParts[2]}-${dataParts[1]}-${dataParts[0]}`;
+                const dataEmissaoOriginal = span.getAttribute('data-emissao');
+                if (dataEmissaoOriginal && dataEmissaoOriginal !== '-') {
+                    const d = new Date(dataEmissaoOriginal);
+                    const yyyyMMdd = d.toISOString().split('T')[0];
                     span.outerHTML = `<input type="date" id="input-${doc}" value="${yyyyMMdd}">`;
                 } else {
                     span.outerHTML = `<input type="date" id="input-${doc}">`;
@@ -154,7 +160,7 @@ function mostrarColaborador() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    nome: colab.Nome,              // <-- Envio por Nome
+                    nome: colab.Nome,
                     novosDados: novosDados
                 })
             });
@@ -173,9 +179,8 @@ function mostrarColaborador() {
     };
 
     document.getElementById('cancelarBtn').onclick = () => {
-        mostrarColaborador();  // Recarrega o colaborador atual, voltando à visualização original
+        mostrarColaborador();
     };
-    
 }
 
 window.onload = carregarColaboradores;
