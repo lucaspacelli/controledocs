@@ -1,0 +1,166 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    background-color: #ffffff;
+    padding-top: 80px;
+}
+
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('fontes/subset-SegoeUI.eot');
+    src: local('Segoe UI'), local('SegoeUI'), url('fontes/subset-SegoeUI.eot?#iefix') format('embedded-opentype'), url('fontes/subset-SegoeUI.woff2') format('woff2'), url('fontes/subset-SegoeUI.woff') format('woff'), url('fontes/subset-SegoeUI.ttf') format('truetype'), url('fontes/subset-SegoeUI.svg#SegoeUI') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+h2 {
+    color: #333;
+}
+
+select {
+    padding: 8px;
+    margin-bottom: 20px;
+    width: 300px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: #cecece;
+}
+
+.card {
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    max-width: 495px;
+    --cor-primaria: #2e2924;
+    --cor-secundaria: #787878;
+    --cor-terciaria: #EB5228;
+    --cor-quartenaria: #B72C31;
+    --cor-branco: #ffffff;
+    --cor-preto: #000000;
+    font: 400 18px/24px 'Segoe UI', sans-serif;
+    text-size-adjust: none;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    clip-path: polygon(40px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 40px) 100%, 0 100%, 0 40px);
+    z-index: 1;
+}
+
+.field {
+    margin-bottom: 12px;
+}
+
+.field label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
+    font-size: medium;
+}
+
+.field span {
+    display: block;
+    color: #555;
+    font-size: medium;
+}
+
+.status-ativo {
+    color: green !important;
+    font-weight: bold;
+}
+
+.status-inativo {
+    color: red !important;
+    font-weight: bold;
+}
+
+
+.headerpolygon {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 80px;
+    background: #EB5228;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 40px) 100%, 0 100%, 0% 50%);
+    z-index: 10;
+    }
+
+.withebanner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: var(--cor-branco);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    }
+
+.logo {
+    position: absolute;
+    content: url("https://www.grupoengetel.com.br/img/logo-engetel-branca.svg");
+    max-height: 75%;
+    left: 50%;
+    top: 10px;
+    bottom: 10px;
+    z-index: 10;
+    }
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 0 20px 0 rgba(78, 73, 68, 0.2);
+    background-color: #ffffff;
+    z-index: 10;
+}
+
+.alerta-60 {
+    color: #FFD700 !important; /* Amarelo */
+    font-weight: bold;
+}
+
+.alerta-30 {
+    color: #E3762A !important; /* Laranja */
+    font-weight: bold;
+}
+
+.vencido {
+    color: #B72C31 !important; /* Vermelho */
+    font-weight: bold;
+}
+
+.legenda {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    font-size: 14px;
+    color: #333;
+}
+
+.legenda div {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.cor-legenda {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+    border-radius: 3px;
+}
+
+.cor-legenda.alerta-60 {
+    background-color: #FFD700;
+}
+
+.cor-legenda.alerta-30 {
+    background-color: #E3762A;
+}
+
+.cor-legenda.vencido {
+    background-color: #B72C31;
+}

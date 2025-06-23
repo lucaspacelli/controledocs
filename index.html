@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta de Colaboradores</title>
+    <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAb1BMVEVHcEztUye6JSe+KCfrUifsUifsUifELye3Iye3IyfrUifrUifEMCe3Iye5JCe3IyfDLiftUye8KCe3IifLNSfrUifSOyfrUifrUie8KCftUye3IyfrUifrUie3Iye3IyfsUie5JCfFMCfrUiftUyee661eAAAAJXRSTlMAg9MoSO7/+/+gEsP290jAB0GvaA+QHHutjtgzNVN7WZ/k/89taZmObAAAAQZJREFUeAF10ldywzAMRdGnTtvqvff9rzECOFSElPt7xiQBCyLLdvBPrucH6vUnvT++74dKRfFvs3wqUFdJKinzfC5XXPGg8qOpApyE1a6NNZraN64Md/oh+sS+hmlgjXA1EnlT+jE6K/MqjR/grc/FEhGZeQhbwqs13oh4E/PwRGon2gZg2NQD8SEML5uBlOZ9IsaDkCYslJJYjsDY7wWfSNnl8862BlI+kVrka3mWQpnnpuKXlK3Mc4v7zo/BkGzW9zr3+lw4H41Jyfca5I6aZtmjmJdrEPWheQWyDogj+Y+6nuYTqBOmaMF3p1avU1wH2coa3CfKan6tPFF+goE4UXbm4sQvEFUVUi29QsoAAAAASUVORK5CYII=" rel="icon" type="image/x-icon"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<div class="withebanner">
+    <div class="headerpolygon">
+    <img alt="Logo Engetel" class="logo" src="https://www.grupoengetel.com.br/img/logo-engetel-branca.svg"/>
+    </div>
+    </div>
+<body>
+
+    <h2>Consulta de Colaboradores</h2>
+
+    <label for="colaboradorSelect">Selecione um colaborador:</label>
+    <select id="colaboradorSelect" onchange="mostrarColaborador()">
+        <option value="">-- Selecione --</option>
+    </select>
+
+    <div id="detalhesColaborador" class="card" style="display:none;"></div>
+
+</body>
+<script src="script.js"></script>
+</html>
