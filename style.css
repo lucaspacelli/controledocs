@@ -164,3 +164,56 @@ header {
 .cor-legenda.vencido {
     background-color: #B72C31;
 }
+
+#editarBtn,
+#salvarBtn,
+#cancelarBtn,
+#novoCadastroBtn,
+#salvarNovoCadastroBtn,
+#cancelarNovoCadastroBtn {
+    background-color: #EB5228;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.2s ease;
+}
+
+#editarBtn:hover,
+#salvarBtn:hover,
+#cancelarBtn:hover,
+#novoCadastroBtn:hover,
+#salvarNovoCadastroBtn:hover,
+#cancelarNovoCadastroBtn:hover {
+    background-color: #C8431E;
+}
+
+input[type="date"] {
+    background-color: #e5e5e5;
+    color: #2e2924;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    appearance: none; /* Remove o estilo nativo em alguns navegadores */
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Deixa o ícone branco (Chrome/Edge) */
+    cursor: pointer;
+}
+
+input[type="date"]:hover {
+    background-color: #c8431e59;
+}
+
+input[type="date"] {
+    color-scheme: dark; /* Faz o navegador respeitar texto claro no calendário interno */
+}

@@ -1,6 +1,6 @@
 let colaboradores = [];
 
-const webAppUrl = 'https://xy4u1e24b5.execute-api.sa-east-1.amazonaws.com/RelayBackend'; 
+const webAppUrl = 'https://aemo72qrwf.execute-api.sa-east-1.amazonaws.com/default/RelayBackend'; /*doPost v3*/
 
 function formatarDataISO(data) {
     if (!data || data === '-') return '-';
@@ -182,5 +182,58 @@ function mostrarColaborador() {
         mostrarColaborador();
     };
 }
+
+document.getElementById('novoCadastroBtn').onclick = () => {
+    const documentos = ['EPI', 'ASO', 'NR06', 'NR10', 'NR12', 'NR18', 'NR35', 'PEMT', 'FG', 'Dallo', 'CIPA'];
+    const container = document.getElementById('documentosInputs');
+    container.innerHTML = '';
+
+    documentos.forEach(doc => {
+        container.innerHTML += `<div class="field"><label>${doc}:</label><input type="date" id="novo-${doc}"></div>`;
+    });
+
+    document.getElementById('novoCadastroForm').style.display = 'block';
+};
+
+document.getElementById('cancelarNovoCadastroBtn').onclick = () => {
+    document.getElementById('novoCadastroForm').style.display = 'none';
+};
+
+document.getElementById('salvarNovoCadastroBtn').onclick = async () => {
+    const documentos = ['EPI', 'ASO', 'NR06', 'NR10', 'NR12', 'NR18', 'NR35', 'PEMT', 'FG', 'Dallo', 'CIPA'];
+    const novosDados = {};
+
+    documentos.forEach(doc => {
+        const input = document.getElementById(`novo-${doc}`);
+        novosDados[doc] = input.value || '';
+    });
+
+    const payload = {
+        acao: 'novoCadastro',
+        nome: document.getElementById('novoNome').value,
+        empresa: document.getElementById('novoEmpresa').value,
+        situacao: document.getElementById('novoSituacao').value,
+        documentos: novosDados
+    };
+
+    try {
+        const response = await fetch(webAppUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+            alert('Novo cadastro salvo com sucesso!');
+            location.reload();
+        } else {
+            console.error('Erro ao salvar novo cadastro:', await response.text());
+            alert('Erro ao salvar no servidor.');
+        }
+    } catch (error) {
+        console.error('Erro no fetch:', error);
+        alert('Falha ao comunicar com o servidor.');
+    }
+};
 
 window.onload = carregarColaboradores;

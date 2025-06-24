@@ -20,6 +20,21 @@
         <option value="">-- Selecione --</option>
     </select>
 
+    <button id="novoCadastroBtn">Novo Cadastro</button>
+
+<div id="novoCadastroForm" class="card" style="display:none; margin-top:20px;">
+    <h3>Novo Cadastro</h3>
+    <div class="field"><label>Nome:</label><input type="text" id="novoNome"></div>
+    <div class="field"><label>Empresa:</label><input type="text" id="novoEmpresa"></div>
+    <div class="field"><label>Situação:</label><input type="text" id="novoSituacao" value="Ativo" readonly></div>
+
+    <h4>Datas de emissão:</h4>
+    <div id="documentosInputs"></div>
+
+    <button id="salvarNovoCadastroBtn">Salvar Novo Cadastro</button>
+    <button id="cancelarNovoCadastroBtn">Cancelar</button>
+</div>
+
     <div id="detalhesColaborador" class="card" style="display:none;"></div>
 
 </body>
