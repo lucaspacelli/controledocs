@@ -1,6 +1,6 @@
 let colaboradores = [];
 
-const webAppUrl = 'https://aemo72qrwf.execute-api.sa-east-1.amazonaws.com/padrao'; /*doPost v3*/
+const webAppUrl = 'https://aemo72qrwf.execute-api.sa-east-1.amazonaws.com/default';
 
 function formatarDataISO(data) {
     if (!data || data === '-') return '-';
