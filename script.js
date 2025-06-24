@@ -1,6 +1,6 @@
 let colaboradores = [];
 
-const webAppUrl = 'https://aemo72qrwf.execute-api.sa-east-1.amazonaws.com/default';
+const webAppUrl = 'https://aemo72qrwf.execute-api.sa-east-1.amazonaws.com/default/RelayBackend';
 
 function formatarDataISO(data) {
     if (!data || data === '-') return '-';
