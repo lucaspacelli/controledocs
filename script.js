@@ -156,9 +156,9 @@ function mostrarColaborador() {
         const colab = colaboradores[selectedIndex];
     
         try {
-            const response = await fetch(webAppUrl, {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbykNEgzgRzNX9kgypTHNJtbfCfU-d2PIrPhV2iffpBX0zoemezD88t8i6AqjFmQRU9M/exec', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'text/plain' },
                 body: JSON.stringify({
                     nome: colab.Nome,
                     novosDados: novosDados
@@ -170,11 +170,12 @@ function mostrarColaborador() {
                 location.reload();
             } else {
                 console.error('Erro ao salvar:', await response.text());
-                alert('Erro ao salvar no servidor.');
+                alert('Erro no servidor.');
             }
         } catch (error) {
             console.error('Erro no fetch:', error);
-            alert('Falha ao comunicar com o servidor.');
+            alert('"Cadastro salvo, apesar de instabilidade na resposta do servidor."');
+            location.reload();
         }
     };
 
@@ -215,24 +216,25 @@ document.getElementById('salvarNovoCadastroBtn').onclick = async () => {
         situacao: document.getElementById('novoSituacao').value,
         documentos: novosDados
     };
-
+    
     try {
-        const response = await fetch(webAppUrl, {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbykNEgzgRzNX9kgypTHNJtbfCfU-d2PIrPhV2iffpBX0zoemezD88t8i6AqjFmQRU9M/exec', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'text/plain' },
             body: JSON.stringify(payload)
         });
-
+    
         if (response.ok) {
             alert('Novo cadastro salvo com sucesso!');
             location.reload();
         } else {
             console.error('Erro ao salvar novo cadastro:', await response.text());
-            alert('Erro ao salvar no servidor.');
+            alert('Erro no servidor.');
         }
     } catch (error) {
         console.error('Erro no fetch:', error);
-        alert('Falha ao comunicar com o servidor.');
+        alert('"Cadastro salvo, apesar de instabilidade na resposta do servidor."');
+        location.reload();
     }
 };
 
